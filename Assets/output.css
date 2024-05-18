@@ -554,8 +554,8 @@ video {
   --tw-contain-style:  ;
 }
 
-.to-blue-900 {
-  --tw-gradient-to: #1e3a8a var(--tw-gradient-to-position);
+.p-11 {
+  padding: 2.75rem;
 }
 
 .text-center {
