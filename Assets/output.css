@@ -558,6 +558,10 @@ video {
   position: absolute;
 }
 
+.ml-16 {
+  margin-left: 4rem;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -570,12 +574,20 @@ video {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
 .hidden {
   display: none;
 }
 
 .h-10 {
   height: 2.5rem;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-56 {
@@ -592,6 +604,10 @@ video {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .flex-grow {
