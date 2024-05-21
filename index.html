@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="Assets/output.css">
     <script src="Assets/index.js" defer></script>
 </head>
-<body>
+<body class="bg-black">
     <header>
-        <h1 class="bg-[#86b3f8] text-center p-4 text-5xl font-black">Climate Info</h1>
-        <div class="bg-[#f3b61d] flex items-center justify-end h-10">
+        <h1 class="bg-[#86b3f8] text-center p-4 text-5xl font-black max-[376px]:text-2xl">Climate Info</h1>
+        <div class="bg-[#f3b61d] flex items-center justify-end h-10 max-[376px]:h-32 max-[376px]:block ">
             <div class="">
                 <input type="text" class="w-48 mr-1.5 rounded-md p-1" placeholder="Select Country">
                 <div class="p-1 hidden absolute">
@@ -26,38 +26,39 @@
                 <div class="p-2 hidden absolute"></div>
             </div>
             <button class="h-8 bg-[#0166fe] mr-1.5 pr-6 pl-6 rounded-md">Search</button>
+            <img src="Assets/vertical-bar.png" width="16" height="32" alt="vertical bar for separation" class="max-[376px]:hidden">
+            <button class="h-8 bg-[#86b3f8] p-1 border-2 border-solid border-black rounded-md ml-1.5 mr-1.5">Current Location</button>
         </div>
     </header>
     <main>
-        <article class="h-56 text-white bg-[#0166fe] p-4 flex justify-center">
+        <article class="h-56 text-white bg-[#0166fe] p-4 mt-3 flex justify-center">
             <div class="h-full border-2 flex-grow flex">
                 <div class="flex-grow flex">
                     <table class="">
                         <tr>
                             <td><b>City</b></td>
                             <td>:</td>
-                            <td></td>
-                            
+                            <td>Nandyal</td>    
                         </tr>
                         <tr>
                             <td><b>Temperature</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>311.25 Kelvin</td>
                         </tr>
                         <tr>
                             <td><b>Minimum Temperature</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>311.25 Kelvin</td>
                         </tr>
                         <tr>
                             <td><b>Pressure</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>1000mb</td>
                         </tr>
                         <tr>
                             <td><b>Humidity</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>34 g/m<sup>3</sup></td>
                         </tr>
                     </table>
                 </div>
@@ -66,27 +67,27 @@
                         <tr>
                             <td><b>Ground Level</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>977hPa</td>
                         </tr>
                         <tr>
                             <td><b>Feels Like</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>314.24 kelvin</td>
                         </tr>
                         <tr>
                             <td><b>Maximum Temperature</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>311.25 kelvin</td>
                         </tr>
                         <tr>
                             <td><b>Visibility</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>10km</td>
                         </tr>
                         <tr>
                             <td><b>Sea Level</b></td>
                             <td>:</td>
-                            <td></td>
+                            <td>1000hPa</td>
                         </tr>
                     </table>
                 </div>
@@ -94,6 +95,134 @@
             <div class="">
                 <img src="https://openweathermap.org/img/wn/10d@2x.png" width="172" height="172">
                 <div class="w-full h-5 text-center">ThunderStorms</div>
+            </div>
+        </article>
+        <article class="h-64 bg-[#b2b2b2] p-4 border-2 border-solid mt-5 flex flex-wrap justify-around">
+            <div class="text-center w-full h-fit">5-Day Forecast</div>
+            <div class="w-1/6  bg-[#e5e5e5] p-3 border-2 border-solid border-black flex flex-wrap justify-center items-center">
+                <div class="text-center w-full">[21-05-24]</div>
+                <table class="mt-3 flex justify-center">
+                    <tr>
+                        <td>Temp</td>
+                        <td>:</td>
+                        <td>25 C</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>:</td>
+                        <td>3km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>:</td>
+                        <td>37 g/m<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Visibility</td>
+                        <td>:</td>
+                        <td>10km</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-1/6  bg-[#e5e5e5] p-3 border-2 border-solid border-black flex flex-wrap justify-center items-center">
+                <div class="text-center w-full">[22-05-24]</div>
+                <table class="mt-3 flex justify-center">
+                    <tr>
+                        <td>Temp</td>
+                        <td>:</td>
+                        <td>25 C</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>:</td>
+                        <td>3km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>:</td>
+                        <td>37 g/m<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Visibility</td>
+                        <td>:</td>
+                        <td>10km</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-1/6 bg-[#e5e5e5] p-3 border-2 border-solid border-black flex flex-wrap justify-center items-center">
+                <div class="text-center w-full">[23-05-24]</div>
+                <table class="mt-3 flex justify-center">
+                    <tr>
+                        <td>Temp</td>
+                        <td>:</td>
+                        <td>25 C</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>:</td>
+                        <td>3km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>:</td>
+                        <td>37 g/m<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Visibility</td>
+                        <td>:</td>
+                        <td>10km</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-1/6 bg-[#e5e5e5] p-3 border-2 border-solid border-black flex flex-wrap justify-center items-center">
+                <div class="text-center w-full">[24-05-24]</div>
+                <table class="mt-3 flex justify-center">
+                    <tr>
+                        <td>Temp</td>
+                        <td>:</td>
+                        <td>25 C</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>:</td>
+                        <td>3km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>:</td>
+                        <td>37 g/m<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Visibility</td>
+                        <td>:</td>
+                        <td>10km</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-1/6  bg-[#e5e5e5] p-3 border-2 border-solid border-black flex flex-wrap justify-center items-center">
+                <div class="text-center w-full">[25-05-24]</div>
+                <table class="mt-3 flex justify-center">
+                    <tr>
+                        <td>Temp</td>
+                        <td>:</td>
+                        <td>25 C</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td>:</td>
+                        <td>3km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>:</td>
+                        <td>37 g/m<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Visibility</td>
+                        <td>:</td>
+                        <td>10km</td>
+                    </tr>
+                </table>
             </div>
         </article>
     </main>
