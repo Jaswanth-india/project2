@@ -614,6 +614,11 @@ video {
   height: 2rem;
 }
 
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .h-full {
   height: 100%;
 }
@@ -676,11 +681,6 @@ video {
   background-color: rgb(1 102 254 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#646970\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 105 112 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#86b3f8\] {
   --tw-bg-opacity: 1;
   background-color: rgb(134 179 248 / var(--tw-bg-opacity));
@@ -735,7 +735,8 @@ video {
 }
 
 .text-5xl {
-  font-size: 3.552rem;
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .font-black {
@@ -747,7 +748,30 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+@media (max-width: 769px) {
+  .max-\[769px\]\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .max-\[769px\]\:mr-1 {
+    margin-right: 0.25rem;
+  }
+
+  .max-\[769px\]\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+
+  .max-\[769px\]\:w-1\/3 {
+    width: 33.333333%;
+  }
+}
+
 @media (max-width: 376px) {
+  .max-\[376px\]\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
   .max-\[376px\]\:block {
     display: block;
   }
@@ -760,38 +784,22 @@ video {
     height: 8rem;
   }
 
+  .max-\[376px\]\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+
+  .max-\[376px\]\:w-fit {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .max-\[376px\]\:justify-center {
+    justify-content: center;
+  }
+
   .max-\[376px\]\:text-2xl {
-    font-size: 1.563rem;
-  }
-}
-
-@media (max-width:376px){
-  article:nth-of-type(1){
-    height:fit-content;
-  }
-  article:nth-of-type(1) > div:nth-of-type(1),article:nth-of-type(1)>div:nth-of-type(1) div,article:nth-of-type(1){
-    display:block;
-  }
-  article:nth-of-type(1) > div:nth-of-type(2){
-    display:none;
-  }
-  article:nth-of-type(2){
-    display:block;
-    height:fit-content;
-  }
-  article:nth-of-type(2) > div{
-    width:fit-content;
-    margin-bottom:5px;
-  }
-}
-
-@media (max-width:769px){
-  article:nth-of-type(2){
-    height:512px;
-  }
-  article:nth-of-type(2) > div:nth-of-type(2), article:nth-of-type(2) > div:nth-of-type(3), article:nth-of-type(2)> div:nth-of-type(4), article:nth-of-type(2)>
-  div:nth-of-type(5), article:nth-of-type(2) > div:nth-of-type(6){
-    width:28%;
-    margin-bottom:10px;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
