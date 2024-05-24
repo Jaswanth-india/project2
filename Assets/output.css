@@ -554,8 +554,16 @@ video {
   --tw-contain-style:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
+}
+
+.inset-0 {
+  inset: 0px;
 }
 
 .ml-1 {
@@ -614,6 +622,10 @@ video {
   height: 2rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -621,6 +633,10 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .w-1\/6 {
@@ -631,8 +647,16 @@ video {
   width: 12rem;
 }
 
+.w-52 {
+  width: 13rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .flex-grow {
@@ -657,6 +681,10 @@ video {
 
 .justify-around {
   justify-content: space-around;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .rounded-md {
@@ -755,6 +783,10 @@ video {
 
   .max-\[769px\]\:mr-1 {
     margin-right: 0.25rem;
+  }
+
+  .max-\[769px\]\:block {
+    display: block;
   }
 
   .max-\[769px\]\:h-fit {

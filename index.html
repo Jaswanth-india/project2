@@ -11,19 +11,18 @@
     <header>
         <h1 class="bg-[#86b3f8] text-center p-4 text-5xl font-black max-[376px]:text-2xl">Climate Info</h1>
         <div class="bg-[#f3b61d] flex items-center justify-end h-10 max-[376px]:h-32 max-[376px]:block max-[769px]:block">
-            <div class="">
+            <div class="w-52">
                 <input type="text" id="countryInput" class="w-48 mr-1.5 rounded-md p-1" placeholder="Select Country">
-                <div id="countrySuggestions" class="p-1 hidden absolute">
-                    <div class="w-48 ">Jaswanth</div>
+                <div id="countrySuggestions" class="w-52 p-1 hidden absolute h-80 overflow-scroll">
                 </div>
             </div>
-            <div class="">
+            <div class="w-52">
                 <input type="text" id="stateInput" class="w-48 mr-1.5 rounded-md p-1" placeholder="Select State">
-                <div class="p-2 hidden absolute"></div>
+                <div id="stateSuggestions" class="w-52 p-1 hidden absolute h-80 overflow-scroll"></div>
             </div>
-            <div class="">
+            <div class="w-52">
                 <input type="text" id="cityInput" class="w-48 mr-1.5 rounded-md p-1" placeholder="Select City">
-                <div class="p-2 hidden absolute"></div>
+                <div id="citySuggestions" class="w-52 p-1 hidden absolute h-80 overflow-scroll"></div>
             </div>
             <button class="h-8 bg-[#0166fe] mr-1.5 pr-6 pl-6 rounded-md">Search</button>
             <img src="Assets/vertical-bar.png" width="16" height="32" alt="vertical bar for separation" class="max-[376px]:hidden">
@@ -231,6 +230,7 @@
                 </table>
             </div>
         </article>
+        <section class="w-screen h-screen text-white bg-black flex justify-center items-center fixed inset-0">Loading...PleaseWait</section>
     </main>
 </body>
 </html>
