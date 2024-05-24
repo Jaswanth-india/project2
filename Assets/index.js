@@ -260,7 +260,7 @@ document.querySelectorAll("button")[1].addEventListener("click",()=>{
                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${a[0]}&lon=${a[1]}&appid=64e7716c87ee60c1455a8a395f4da7f2`)
                 .then((output)=>output.json())
                 .then((output)=>{
-                    document.querySelector("#cityName").innerText=currentLocation;
+                    document.querySelector("#cityName").innerText="currentLocation";
                     document.querySelector("#temperature").innerText=output.main.temp-273;
                     document.querySelector("#temperature").innerText+=" °C";
                     document.querySelector("#minTemp").innerText=output.main.temp_min-273;
