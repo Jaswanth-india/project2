@@ -14,7 +14,9 @@ fetch("https://api.countrystatecity.in/v1/countries", {headers:{"X-CSCAPI-KEY":"
                     status1="success1";
                     document.querySelector("section").style.display="none";
                 })
-                .catch(error => console.log('error', error));
+                .catch(error => {console.log('error', error);
+                    document.querySelector("section").innerText="An error occurred please reload the page";
+                });
 
 function connectionTimedOutFun(){
     setTimeout(()=>{
@@ -76,6 +78,9 @@ document.querySelector("#countryInput").addEventListener("input",()=>{
                     statesList=result;
                     document.querySelector("section").style.display="none";
                 })
+                .catch((result)=>{
+                    document.querySelector("section").innerText="An error Occurred please reload the page";
+                })
                 connectionTimedOutFun();
                 document.querySelector("#stateInput").addEventListener("input",()=>{
                     document.querySelector("#stateSuggestions").innerHTML="";
@@ -115,6 +120,9 @@ document.querySelector("#countryInput").addEventListener("input",()=>{
                                 document.querySelector("section").style.display="none";
                                 status1="success3";
                                 citiesList=result;
+                            })
+                            .catch((result)=>{
+                                document.querySelector("section").innerText="An error Occurred please reload the page";
                             })
                             connectionTimedOutFun();
                             document.querySelector("#cityInput").addEventListener("input",()=>{
@@ -158,7 +166,7 @@ document.querySelector("button").addEventListener("click",()=>{
     
     if(fetchDataApproval){
         let a=[];
-        /* document.querySelector("section").style.display="flex"; */
+        document.querySelector("section").style.display="flex";
         fetch("http://api.openweathermap.org/geo/1.0/direct?q="+document.querySelector("#cityInput").value+"&limit=5&appid=64e7716c87ee60c1455a8a395f4da7f2")
         .then((output)=>output.json())
         .then((output)=>{
@@ -197,25 +205,121 @@ document.querySelector("button").addEventListener("click",()=>{
                     document.querySelectorAll("article:nth-of-type(2) table tr td")[8].innerText=output.list[0].main.humidity+"g/m3";
                     document.querySelectorAll("article:nth-of-type(2) table tr td")[11].innerText=output.list[0].visibility+"m"
                     let currentDate=[];
-                    let headingMonitor;.innerText=`[${currentDate}]`
-                    let tdmonitor=11;
+                    let headingMonitor=1;
+                    let tdMonitor=11;
                     for(let j=0;j<40;j++){
                         currentDate[0]=output.list[j].dt_txt;
                         currentDate[0]=currentDate[0].slice(0,10);
                         currentDate[1]=currentDate[0].slice(8,10);
-                        [1]=Number(currentDate[1]);
-                        if(currentDate[1]==firstDate[1]+1){
+                        currentDate[1]=Number(currentDate[1]);
+                        if(currentDate[1]==firstDate[1]+1 & headingMonitor<5){
                             firstDate[1]+=1;
-                            document.querySelector(`article:nth-of-type(2) div div:nth-of-type(${headingMonitor})`).innerText=`[${currentDate}]`
-                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdmonitor+3].innerText=output.list[0].main.temp+"°C";
-                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdmonitor+6].innerText=output.list[0].wind.speed+"meter";
-                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdmonitor+9].innerText=output.list[0].main.humidity+"g/m3";
-                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdmonitor+12].innerText=output.list[0].visibility+"m";
+                            document.querySelectorAll(`article:nth-of-type(2) div div:nth-of-type(1)`)[headingMonitor].innerText=`[${currentDate[0]}]`;
+                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+3].innerText=output.list[0].main.temp+"°C";
+                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+6].innerText=output.list[0].wind.speed+"meter";
+                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+9].innerText=output.list[0].main.humidity+"g/m3";
+                            document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+12].innerText=output.list[0].visibility+"m";
+                            headingMonitor++;
+                            tdMonitor+=12;
                         }
                     }
+                    document.querySelector("section").style.display="none";
+                })
+                .catch((result)=>{
+                    document.querySelector("section").innerText="An error Occurred please reload the page";
                 })
             })
+            .catch((result)=>{
+                document.querySelector("section").innerText="An error Occurred please reload the page";
+            })
         })
+        .catch((result)=>{
+            document.querySelector("section").innerText="An error Occurred please reload the page";
+        })
+    }
+});
+
+document.querySelectorAll("button")[1].addEventListener("click",()=>{
+    if(true){
+        let a=[];
+        document.querySelector("section").style.display="flex";
+        
+        function successCallback(output){
+            a[0]=output.coords.latitude;
+            a[1]=output.coords.longitude;
+            a[2]="proceed";
+        }
+
+        function errorCallback(output){
+            console.log(output);
+            document.querySelector("section").innerText="An error Occurred please reload the page";
+        }
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        setTimeout(()=>{
+            if(a[2]=="proceed"){
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${a[0]}&lon=${a[1]}&appid=64e7716c87ee60c1455a8a395f4da7f2`)
+                .then((output)=>output.json())
+                .then((output)=>{
+                    document.querySelector("#cityName").innerText=currentLocation;
+                    document.querySelector("#temperature").innerText=output.main.temp-273;
+                    document.querySelector("#temperature").innerText+=" °C";
+                    document.querySelector("#minTemp").innerText=output.main.temp_min-273;
+                    document.querySelector("#minTemp").innerText+=" °C";
+                    document.querySelector("#maxTemp").innerText=output.main.temp_max-273;
+                    document.querySelector("#maxTemp").innerText+=" °C";
+                    document.querySelector("#pressure").innerText=output.main.pressure;
+                    document.querySelector("#pressure").innerText+=" mb";
+                    document.querySelector("#humidity").innerText=output.main.humidity;
+                    document.querySelector("#humidity").innerText+=" g/m";
+                    document.querySelector("#groundLevel").innerText=output.main.grnd_level+" Pa";
+                    document.querySelector("#feelsLike").innerText=output.main.feels_like-273;
+                    document.querySelector("#feelsLike").innerText+=" °C";
+                    document.querySelector("#visibility").innerText=output.visibility+" km";
+                    document.querySelector("#seaLevel").innerText=output.main.sea_level+" Pa";
+                    document.querySelector("#icon").src=`https://openweathermap.org/img/wn/${output.weather[0].icon}@2x.png`;
+                    document.querySelector("#descreption").innerText=output.weather[0].description;
+                    fetch("https://api.openweathermap.org/data/2.5/forecast?lat="+a[0]+"&lon="+a[1]+"&appid=64e7716c87ee60c1455a8a395f4da7f2")
+                    .then((output)=>output.json())
+                    .then((output)=>{
+                        firstDate[0]=output.list[0].dt_txt;
+                        firstDate[0]=firstDate[0].slice(0,10);
+                        firstDate[1]=firstDate[0].slice(8,10);
+                        firstDate[1]=Number(firstDate[1]);
+                        document.querySelector("article:nth-of-type(2) div div:nth-of-type(1)").innerText=`[${firstDate[0]}]`
+                        document.querySelectorAll("article:nth-of-type(2) table tr td")[2].innerText=output.list[0].main.temp+"°C";
+                        document.querySelectorAll("article:nth-of-type(2) table tr td")[5].innerText=output.list[0].wind.speed+"meters";
+                        document.querySelectorAll("article:nth-of-type(2) table tr td")[8].innerText=output.list[0].main.humidity+"g/m3";
+                        document.querySelectorAll("article:nth-of-type(2) table tr td")[11].innerText=output.list[0].visibility+"m"
+                        let currentDate=[];
+                        let headingMonitor=1;
+                        let tdMonitor=11;
+                        for(let j=0;j<40;j++){
+                            currentDate[0]=output.list[j].dt_txt;
+                            currentDate[0]=currentDate[0].slice(0,10);
+                            currentDate[1]=currentDate[0].slice(8,10);
+                            currentDate[1]=Number(currentDate[1]);
+                            if(currentDate[1]==firstDate[1]+1 & headingMonitor<5){
+                                firstDate[1]+=1;
+                                document.querySelectorAll(`article:nth-of-type(2) div div:nth-of-type(1)`)[headingMonitor].innerText=`[${currentDate[0]}]`;
+                                document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+3].innerText=output.list[0].main.temp+"°C";
+                                document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+6].innerText=output.list[0].wind.speed+"meter";
+                                document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+9].innerText=output.list[0].main.humidity+"g/m3";
+                                document.querySelectorAll("article:nth-of-type(2) table tr td")[tdMonitor+12].innerText=output.list[0].visibility+"m";
+                                headingMonitor++;
+                                tdMonitor+=12;
+                            }
+                        }
+                        document.querySelector("section").style.display="none";
+                    })
+                    .catch((result)=>{
+                        document.querySelector("section").innerText="An error Occurred please reload the page";
+                    })
+                })
+                .catch((result)=>{
+                    document.querySelector("section").innerText="An error Occurred please reload the page";
+                })
+            }
+        },10000)
     }
 });
 
